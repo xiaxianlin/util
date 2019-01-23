@@ -42,8 +42,34 @@ function fib3(n) {
 function fib4(n) {
     return Math.round((Math.pow((1 + Math.sqrt(5)) / 2, n) - Math.pow((1 - Math.sqrt(5)) / 2, n)) / Math.sqrt(5))
 }
-console.time('fib')
-var num = fib4(32)
-console.timeEnd('fib')
 
-console.log(num)
+function bin1(n, k) {
+    if (k == 0 || n == k) {
+        return 1
+    } else {
+        return bin1(n - 1, k - 1) + bin1(n - 1, k)
+    }
+}
+
+function bin2(n, k) {
+    var i,
+        j,
+        B = []
+
+    for (i = 0; i <= n; i++) {
+        B[i] = []
+        for (j = 0; j <= Math.min(i, k); j++) {
+            if (j == 0 || j == i) {
+                B[i][j] = 1
+            } else {
+                B[i][j] = B[i - 1][j - 1] + B[i - 1][j]
+            }
+        }
+    }
+    return B[n][k]
+}
+
+console.time('bin')
+var result = bin1(6, 4)
+console.timeEnd('bin')
+console.log(result)

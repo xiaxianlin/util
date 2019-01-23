@@ -1,4 +1,4 @@
-function reserve(num, len, result) {
+function reserve1(num, len, result) {
     len = typeof len === 'number' ? len : 0
     result = typeof result === 'number' ? result : 0
     if (num > 0) {
@@ -10,7 +10,7 @@ function reserve(num, len, result) {
     }
 }
 
-function reverseNumber(num) {
+function reverse2(num) {
     if (num > Math.pow(2, 53)) {
         throw '数字过大'
     }
@@ -22,9 +22,3 @@ function reverseNumber(num) {
     }
     return result
 }
-
-let before = 2343598
-let after = reverseNumber(2343598)
-
-console.log('reserve:', before)
-console.log('result:', after)

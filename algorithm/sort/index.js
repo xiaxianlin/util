@@ -76,83 +76,6 @@ function shellSort(arr) {
     return arr
 }
 
-function merge(left, right) {
-    var result = []
-    while (left.length > 0 && right.length > 0) {
-        if (left[0] <= right[0]) {
-            result.push(left.shift())
-        } else {
-            result.push(right.shift())
-        }
-    }
-    while (left.length) {
-        result.push(left.shift())
-    }
-    while (right.length) {
-        result.push(right.shift())
-    }
-    return result
-}
-/**
- * 归并排序
- */
-function mergeSort(arr) {
-    var len = arr.length
-    if (len < 2) {
-        return arr
-    }
-    var middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle)
-
-    return merge(mergeSort(left), mergeSort(right))
-}
-
-function merge2(data, low, mid, high) {
-    var i = low,
-        j = mid + 1,
-        k = low,
-        tmp = []
-
-    while (i <= mid && j <= high) {
-        if (data[i] < data[j]) {
-            tmp[k] = data[i]
-            i++
-        } else {
-            tmp[k] = data[j]
-            j++
-        }
-        k++
-    }
-    if (i > mid) {
-        while (j <= high) {
-            tmp[k] = data[j]
-            j++
-            k++
-        }
-    } else {
-        while (i <= mid) {
-            tmp[k] = data[i]
-            i++
-            k++
-        }
-    }
-    for (var m = low; m < high; m++) {
-        data[m] = tmp[m]
-    }
-}
-
-function mergeSort2(data, low, high) {
-    low = typeof low === 'number' ? low : 0
-    high = typeof high === 'number' ? high : data.length - 1
-    if (low < high) {
-        var mid = ((low + high) / 2) | 0
-        mergeSort2(low, mid)
-        mergeSort2(mid + 1, high)
-        merge2(data, low, mid, high)
-    }
-}
-
 function partition(arr, left, right) {
     var pivot = left,
         index = pivot + 1
@@ -316,11 +239,10 @@ console.time('sort')
 // var result = selectionSort(arr)
 // var result = insertionSort(arr)
 // var result = shellSort(arr)
-var result = mergeSort2(arr)
 // var result = quickSort(arr)
 // var result = heapSort(arr)
 // var result = countingSort(arr, 100)
 // var result = bucketSort(arr)
-// var result = radixSort(arr, 3)
+var result = radixSort(arr, 3)
 console.timeEnd('sort')
 console.log(arr)

@@ -98,11 +98,13 @@ function createSortMethod2(data) {
     return sort
 }
 
-var data = [3, 45, 98, 2, 8, 100, 39, 56, 81, 190]
+var data = [61, 3, 45, 98, 2, 8, 100, 39, 56, 81, 190]
 
 console.log('source', data)
-var sort = createSortMethod1(data)
+var sort = createSortMethod1()
+console.time('sort')
 sort(data.length, data)
+console.timeEnd('sort')
 // var sort = createSortMethod2(data)
 // sort(0, data.length - 1)
 console.log('result', data)
