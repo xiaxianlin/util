@@ -14,7 +14,7 @@ function times(matrixA, matrixB) {
 }
 
 function createMatrixMultOrder(n, d) {
-    function min(i, j, d, M) {
+    function minimum(i, j, d, M) {
         if (i == j) {
             return [0, i]
         }
@@ -41,7 +41,7 @@ function createMatrixMultOrder(n, d) {
         for (diagonal = 0; diagonal < n; diagonal++) {
             for (i = 0; i < n - diagonal; i++) {
                 j = i + diagonal
-                var result = min(i, j, d, M)
+                var result = minimum(i, j, d, M)
                 M[i][j] = result[0]
                 P[i][j] = result[1]
             }
